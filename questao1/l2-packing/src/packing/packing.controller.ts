@@ -13,7 +13,6 @@ export class PackingController {
   @Post()
 //   @UseGuards(AuthGuard('bearer'))
   pack(@Body() body: PackOrdersDto) {
-    console.log('Dados recebidos no controller:', JSON.stringify(body, null, 2));
     return this.packingService.packOrders(body);
   }
 }

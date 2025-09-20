@@ -96,35 +96,33 @@ export class PackingService {
   }
 
   private findBestCaixa(produto: Produto): Caixa | null {
+    const { altura, largura, comprimento } = produto.dimensoes;
     
     const caixasViaveis = CAIXAS.filter(caixa => {
-      const cabe = this.produtoCabeNaCaixa(produto, caixa);
-      return cabe;
+      return this.produtoCabeNaCaixa(produto, caixa);
     });
     
     if (caixasViaveis.length === 0) {
       return null;
     }
     
-    const volumeProduto = produto.dimensoes.altura * produto.dimensoes.largura * produto.dimensoes.comprimento;
+    const produtoAlto = Math.max(altura, largura, comprimento) > 30;
     
-    const caixaComEficiencia = caixasViaveis.map(caixa => {
-      const volumeCaixa = caixa.dimensoes.altura * caixa.dimensoes.largura * caixa.dimensoes.comprimento;
-      const eficiencia = volumeProduto / volumeCaixa;
-      return { caixa, eficiencia, volumeCaixa };
-    });
-    
-    caixaComEficiencia.sort((a, b) => {
-      const diferencaEficiencia = b.eficiencia - a.eficiencia;
-      if (Math.abs(diferencaEficiencia) > 0.1) {
-        return diferencaEficiencia;
+    if (produtoAlto) {
+      const caixa2 = caixasViaveis.find(c => c.caixa_id === 'Caixa 2');
+      if (caixa2) {
+        return caixa2;
       }
-      return a.volumeCaixa - b.volumeCaixa;
-    });
-    
-    const melhorCaixa = caixaComEficiencia[0].caixa;
-    
-    return melhorCaixa;
+            const caixa3 = caixasViaveis.find(c => c.caixa_id === 'Caixa 3');
+      if (caixa3) {
+        return caixa3;
+      }
+    }
+        const caixa1 = caixasViaveis.find(c => c.caixa_id === 'Caixa 1');
+    if (caixa1) {
+      return caixa1;
+    }
+        return caixasViaveis[0];
   }
 
   private produtoCabeNaCaixa(produto: Produto, caixa: Caixa): boolean {
