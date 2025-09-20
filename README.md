@@ -33,7 +33,7 @@ docker-compose up
 docker build -t l2-packing .
 docker run -p 3000:3000 -e AUTH_TOKEN=valid-token-123 l2-packing
 ```
-### Lembre de utilizar o Bearer token para auterizar a requisição do metodo POST sendo o token unico, o mesmo se encontra com mais detalhes no codigo com uso da biblioteca Passport: Bearer valid-token-123
+### Lembre de utilizar o Bearer token para auth correto na requisição do metodo POST sendo o token unico, o mesmo se encontra com mais detalhes no codigo com uso da biblioteca Passport: Bearer valid-token-123
 
 
 A API estará disponível em: `http://localhost:3000`
