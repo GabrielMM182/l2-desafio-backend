@@ -33,6 +33,8 @@ docker-compose up
 docker build -t l2-packing .
 docker run -p 3000:3000 -e AUTH_TOKEN=valid-token-123 l2-packing
 ```
+### Lembre de utilizar o Bearer token para auterizar a requisição do metodo POST sendo o token unico, o mesmo se encontra com mais detalhes no codigo com uso da biblioteca Passport: Bearer valid-token-123
+
 
 A API estará disponível em: `http://localhost:3000`
 
@@ -56,7 +58,7 @@ Acesse `http://localhost:3000/docs` para ver a documentação Swagger.
 questao2/
 ```
 
-### É ncessario copiar o arquivo schema.sql e seed.sql dentro do banco de dados para funcionamento correto 
+### É ncessario copiar o arquivo schema.sql e seed.sql dentro do banco de dados para funcionamento correto, o banco de dados pode ser criaro pelo arquivo docker
 
 ### 🚀 Como rodar com Docker
 
