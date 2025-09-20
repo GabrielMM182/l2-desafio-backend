@@ -1,0 +1,12 @@
+### Buscar horários das salas em um dia específico
+GET http://localhost:3000/rooms/schedule?day=1
+
+###
+
+### Buscar horários de todas as salas (sem filtro de dia)
+GET http://localhost:3000/rooms/schedule
+
+###
+
+### Buscar horas dos professores
+GET http://localhost:3000/professors/hours
